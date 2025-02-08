@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Organizer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #119cff; /* Light Blue Background Color */
+            background-image: url('https://i.pinimg.com/736x/0e/65/ff/0e65ff3139c9b5aec58f66ac2adb1f22.jpg'); /* Your background image URL */
+            background-size: cover;
+            background-position: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .input-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        #message {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        .error {
+            background-color: #ffebee;
+            color: #c62828;
+            border: 1px solid #ffcdd2;
+        }
+        .success {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            border: 1px solid #c8e6c9;
+        }
+        .stats {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+            border: 1px solid #dee2e6;
+        }
+        .stats h3 {
+            margin-top: 0;
+            color: #333;
+        }
+        .category-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .category-item {
+            background-color: white;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #dee2e6;
+        }
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #3498db;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-left: 10px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>File Organizer</h2>
+        <div class="input-group">
+            <input type="text" id="folderPath" placeholder="Enter folder path (e.g., C:\Users\YourName\Documents)">
+            <button onclick="organizeFiles()" id="organizeBtn">Organize</button>
+        </div>
+        <p id="message"></p>
+        <div id="stats" class="stats" style="display: none;">
+            <h3>Organization Results</h3>
+            <div id="statsContent"></div>
+        </div>
+    </div>
+
+    <script>
+        function organizeFiles() {
+            const folderPath = document.getElementById("folderPath").value;
+            const messageElement = document.getElementById("message");
+            const organizeBtn = document.getElementById("organizeBtn");
+            const statsDiv = document.getElementById("stats");
+            const statsContent = document.getElementById("statsContent");
+            
+            if (!folderPath) {
+                messageElement.className = "error";
+                messageElement.innerText = "Please enter a folder path.";
+                return;
+            }
+            
+            // Disable button and show loading state
+            organizeBtn.disabled = true;
+            messageElement.className = "";
+            messageElement.innerHTML = "Organizing files... <div class='loading'></div>";
+            statsDiv.style.display = "none";
+            
+            fetch("http://localhost:5000/organize", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify({ folderPath: folderPath })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                messageElement.className = data.error ? "error" : "success";
+                messageElement.innerText = data.error || data.success;
+
+                if (data.stats) {
+                    statsDiv.style.display = "block";
+                    let statsHTML = `
+                        <p>Started at: ${data.stats.start_time}</p>
+                        <p>Total files processed: ${data.stats.total_files}</p>
+                        <p>Files organized: ${data.stats.organized_files}</p>
+                        <p>Total size: ${data.stats.total_size}</p>
+                        <h4>Categories:</h4>
+                        <div class="category-stats">
+                    `;
+
+                    for (const [category, info] of Object.entries(data.stats.categories)) {
+                        if (info.count > 0) {
+                            statsHTML += `
+                                <div class="category-item">
+                                    <strong>${category}</strong><br>
+                                    Files: ${info.count}<br>
+                                    Size: ${info.size}
+                                </div>
+                            `;
+                        }
+                    }
+
+                    statsHTML += '</div>';
+                    statsContent.innerHTML = statsHTML;
+                }
+            })
+            .catch(error => {
+                messageElement.className = "error";
+                messageElement.innerText = "An error occurred: " + error.message;
+                console.error("Error:", error);
+            })
+            .finally(() => {
+                organizeBtn.disabled = false;
+            });
+        }
+    </script>
+</body>
+</html>
