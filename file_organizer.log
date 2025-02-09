@@ -176,3 +176,71 @@ INFO:werkzeug: * Debugger PIN: 341-487-960
 INFO:werkzeug:127.0.0.1 - - [09/Feb/2025 01:00:01] "OPTIONS /organize HTTP/1.1" 200 -
 INFO:root:Organized 2 files in C:\Users\USER\Desktop\a
 INFO:werkzeug:127.0.0.1 - - [09/Feb/2025 01:00:01] "POST /organize HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 341-487-960
+INFO:werkzeug:127.0.0.1 - - [09/Feb/2025 07:33:01] "[33mGET /templates/index.html HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [09/Feb/2025 07:33:01] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [09/Feb/2025 07:33:05] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Feb/2025 07:33:40] "OPTIONS /organize HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Feb/2025 07:33:41] "[31m[1mPOST /organize HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [09/Feb/2025 07:33:51] "OPTIONS /organize HTTP/1.1" 200 -
+INFO:root:Organized 2 files in C:\Users\USER\Desktop\trial
+INFO:werkzeug:127.0.0.1 - - [09/Feb/2025 07:33:52] "POST /organize HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Feb/2025 07:48:41] "OPTIONS /organize HTTP/1.1" 200 -
+INFO:root:Organized 3 files in C:\Users\USER\Desktop\trial2
+INFO:werkzeug:127.0.0.1 - - [09/Feb/2025 07:48:42] "POST /organize HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Feb/2025 07:52:26] "OPTIONS /organize HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Feb/2025 07:52:26] "[31m[1mPOST /organize HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [09/Feb/2025 07:53:39] "OPTIONS /organize HTTP/1.1" 200 -
+INFO:root:Organized 4 files in C:\Users\USER\Desktop\trial3
+INFO:werkzeug:127.0.0.1 - - [09/Feb/2025 07:53:39] "POST /organize HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Feb/2025 08:01:29] "OPTIONS /organize HTTP/1.1" 200 -
+INFO:root:Organized 0 files in C:\Users\USER\Desktop\trial3
+INFO:werkzeug:127.0.0.1 - - [09/Feb/2025 08:01:30] "POST /organize HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Feb/2025 08:01:39] "OPTIONS /organize HTTP/1.1" 200 -
+INFO:root:Organized 0 files in C:\Users\USER\Desktop\trial2
+INFO:werkzeug:127.0.0.1 - - [09/Feb/2025 08:01:40] "POST /organize HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Feb/2025 08:02:18] "OPTIONS /organize HTTP/1.1" 200 -
+INFO:root:Organized 0 files in C:\Users\USER\Desktop\trial
+INFO:werkzeug:127.0.0.1 - - [09/Feb/2025 08:02:18] "POST /organize HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Feb/2025 08:02:39] "OPTIONS /organize HTTP/1.1" 200 -
+INFO:root:Organized 0 files in C:\Users\USER\Desktop\trial
+INFO:werkzeug:127.0.0.1 - - [09/Feb/2025 08:02:40] "POST /organize HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Feb/2025 08:05:09] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Feb/2025 08:09:10] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Feb/2025 08:17:31] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Feb/2025 08:22:53] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Feb/2025 08:22:54] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Feb/2025 08:24:02] "OPTIONS /organize HTTP/1.1" 200 -
+INFO:root:Organized 8 files in C:\Users\USER\Desktop\trial4
+INFO:werkzeug:127.0.0.1 - - [09/Feb/2025 08:24:02] "POST /organize HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 341-487-960
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 798-778-570
+INFO:werkzeug:127.0.0.1 - - [09/Feb/2025 08:43:14] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Feb/2025 08:43:47] "OPTIONS /organize HTTP/1.1" 200 -
+INFO:root:Organized 9 files in C:\Users\USER\Desktop\trial5
+INFO:werkzeug:127.0.0.1 - - [09/Feb/2025 08:43:48] "POST /organize HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\USER\\Desktop\\file\\app.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\USER\\Desktop\\file\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 341-487-960
